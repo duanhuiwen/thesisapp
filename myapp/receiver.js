@@ -1,5 +1,3 @@
-
-
 var app = require('express')();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
@@ -19,14 +17,15 @@ io.on('connection', function(socket){
 		//console.log(data.img);
 
 		base64Data = data.img.replace(/^data:image\/png;base64,/, "");
+		//console.log(base64Data);
 		var fileName = (new Date()).toString().replace(/ /g,'-')+'.png';
 		fs.writeFile('./receivedImages/'+fileName, base64Data, 'base64', function(err) {
 	  		console.log('err');
 		});
 
-		//console.log(base64Data);
+		
 		//console.log(i++);
-		socket.emit('resetBusy',{busy:false});
+		socket.emit('resetBusy',{busyStatus:false});
 	});
 	
 
