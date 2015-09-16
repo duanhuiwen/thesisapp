@@ -1,7 +1,7 @@
 {
   "name": "myapp",
-  "version": "0.0.0",
-  "description": "",
+  "version": "0.0.1",
+  "description": "thesis",
   "main": "receiver.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,6 +10,6 @@
   "license": "BSD-2-Clause",
   "dependencies": {
     "express": "~4.12.3",
-    "socket.io": "~1.3.5"
+    "socket.io": "~1.3.6"
   }
 }

@@ -9,18 +9,20 @@ app.get('/', function(req, res){
 
 io.on('connection', function(socket){
 	console.log('a user connected');
-	var i=0;
+	//var i=0;
 	socket.on('img', function (data) {
 		console.log('data');
 		console.log(data.seq);
-		console.log(data.img.toString().length);
+		//console.log(data.img.toString().length);
 		//console.log(data.img);
 
 		base64Data = data.img.replace(/^data:image\/png;base64,/, "");
 		//console.log(base64Data);
-		var fileName = (new Date()).toString().replace(/ /g,'-')+'.png';
-		fs.writeFile('./receivedImages/'+fileName, base64Data, 'base64', function(err) {
-	  		console.log('err');
+		var fileName = (new Date()).toISOString().replace(/-/g,"").replace(/:/g,"_").slice(0,17)+'.png';
+		fs.writeFile('receivedImages/'+fileName, base64Data, 'base64', function(err) {
+	  		if(err){
+	  			console.log(err.message);
+	  		}
 		});
 
 		
